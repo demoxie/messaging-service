@@ -1,0 +1,40 @@
+name: messaging-service-prod-pipeline
+
+on:
+  pull_request:
+    branches: [ "main" ]
+  push:
+    branches: [ "main" ]
+
+
+jobs:
+  build:
+
+    runs-on: messaging-service-prod-runner
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: Install dependencies
+        run: yarn install
+      - name: Create .env file
+        run: |
+          touch .env
+          echo "${{ secrets.MESSAGING_SERVICE_PROD_ENV }}" > .env
+      - name: Create logs directory
+        run: mkdir -p logs
+      - name: Restart Server
+        run: |
+          sudo chmod +x ./restart.sh
+          sudo ./restart.sh
+      - name: Run Tests
+        run: yarn test

@@ -1,0 +1,10 @@
+apps:
+  name: messaging-service
+  script: ./bin/www
+  instances: 2
+  exec_mode: cluster
+  log_date_format: YYYY-MM-DD HH:mm:ss Z
+  log_file: /var/log/messaging-service.log
+  error_file: /var/log/messaging-service-error.log
+  out_file: /var/log/messaging-service-out.log
+  merge_logs: false
