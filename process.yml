@@ -1,10 +1,9 @@
 apps:
-  name: messaging-service
-  script: ./bin/www
-  instances: 2
-  exec_mode: cluster
-  log_date_format: YYYY-MM-DD HH:mm:ss Z
-  log_file: /var/log/messaging-service.log
-  error_file: /var/log/messaging-service-error.log
-  out_file: /var/log/messaging-service-out.log
-  merge_logs: false
+  - name: "messaging-service"
+    script: "dist/main.js"
+    instances: 1
+    autorestart: true
+    watch: true  # Enable watch mode
+    max_memory_restart: 1G
+    env:
+      NODE_ENV: "production"
