@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({
   name: 'whatsapp_messages',
@@ -16,7 +16,10 @@ export class WhatsappMessages {
   @Column()
   from: string;
 
-  @Column()
+  @Column({
+    type: 'json',
+    nullable: true,
+  })
   body: string;
 
   @Column({ default: false })

@@ -19,7 +19,10 @@ export class Email {
   @Column()
   subject: string;
 
-  @Column()
+  @Column({
+    type: 'json',
+    nullable: true,
+  })
   body: string;
 
   @Column({ default: false })

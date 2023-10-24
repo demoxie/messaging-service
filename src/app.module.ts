@@ -5,9 +5,10 @@ import { ConfigModule } from '@nestjs/config';
 import { RabbitmqModule } from './rabbitmq/rabbitmq.module';
 import { EmailSenderModule } from './email-sender/emailsender.module';
 import { ClientsModule } from '@nestjs/microservices';
-import { RabbitMQService } from "./rabbitmq/service/rabbitmq.service";
-import { EmailSenderService } from "./email-sender/service/email.sender.service";
-import { NodemailerConfigService } from "./config/nodemailer/nodemailer.config";
+import { RabbitMQService } from './rabbitmq/service/rabbitmq.service';
+import { EmailSenderService } from './email-sender/service/email.sender.service';
+import { NodemailerConfigService } from './config/nodemailer/nodemailer.config';
+import { AppDataSourceModule } from './database/app.datasource.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { NodemailerConfigService } from "./config/nodemailer/nodemailer.config";
     RabbitmqModule,
     EmailSenderModule,
     ClientsModule,
+    AppDataSourceModule,
   ],
   controllers: [AppController],
   providers: [
