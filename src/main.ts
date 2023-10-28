@@ -6,7 +6,6 @@ import { Transport } from '@nestjs/microservices';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 
-
 const port = process.env.PORT || 3000;
 const bootstrap = async () => {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -25,7 +24,7 @@ const bootstrap = async () => {
         )}`,
       ],
       noAck: false,
-      queue: configService.get('RABBITMQ_QUEUE'),
+      queue: configService.get('EMAIL_QUEUE'),
       queueOptions: {
         durable: true,
       },

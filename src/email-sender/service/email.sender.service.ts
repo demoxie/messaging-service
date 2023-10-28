@@ -33,7 +33,7 @@ export class EmailSenderService {
     console.log('Sending email...');
     switch (senderService) {
       case 'nodemailer':
-        this.nodemailerSender
+        return this.nodemailerSender
           .sendMail(mailOptions)
           .then((res) => {
             console.log('Email sent successfully');
@@ -43,9 +43,8 @@ export class EmailSenderService {
             console.log('Error sending email');
             return err;
           });
-        break;
       default:
-        await this.nodemailerSender
+        return await this.nodemailerSender
           .sendMail(mailOptions)
           .then((res) => {
             console.log('Email sent successfully');
@@ -55,7 +54,6 @@ export class EmailSenderService {
             console.log('Error sending email');
             return err;
           });
-        break;
     }
   };
 }

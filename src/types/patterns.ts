@@ -1,4 +1,4 @@
-import { EmailDto } from "../message/dto/email.dto";
+import { EmailDto } from '../message/dto/email.dto';
 
 export enum Patterns {
   PAYMENT_QUEUE = 'payment_queue',

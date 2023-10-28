@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { ConfigService } from '@nestjs/config';
 import { RabbitMQService } from './service/rabbitmq.service';
-import { EmailSenderModule } from "../email-sender/emailsender.module";
-import { EmailSenderService } from "../email-sender/service/email.sender.service";
-import { NodemailerConfigService } from "../config/nodemailer/nodemailer.config";
+import { EmailSenderModule } from '../email-sender/emailsender.module';
+import { EmailSenderService } from '../email-sender/service/email.sender.service';
+import { NodemailerConfigService } from '../config/nodemailer/nodemailer.config';
 
 @Module({
   imports: [
