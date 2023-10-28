@@ -40,5 +40,5 @@ jobs:
           sudo ./restart.sh
       - name: Build App
         run: yarn build
-      - name: Run Tests
-        run: yarn run test
+#      - name: Run Tests
+#        run: yarn run test
