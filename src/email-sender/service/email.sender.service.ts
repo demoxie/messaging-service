@@ -6,6 +6,10 @@ import { EmailDto } from '../../message/dto/email.dto';
 import * as fs from 'fs';
 import * as handlebars from 'handlebars';
 import { ClientProxy } from '@nestjs/microservices';
+import { config} from 'dotenv';
+config();
+
+const { VIEW_DIRECTORY_CLOUD, VIEW_DIRECTORY_LOCAL } = process.env;
 
 @Injectable()
 export class EmailSenderService {
@@ -18,7 +22,7 @@ export class EmailSenderService {
   sendEmail = async (templateName: string, email: EmailDto) => {
     this.nodemailerSender = this.nodemailerConfigService.getEmailConfig();
     const source = fs.readFileSync(
-      `/home/shadrach/Desktop/Projects/GAMESTAR/messaging-service/views/${templateName}.hbs`,
+      `${VIEW_DIRECTORY_CLOUD}/${templateName}.hbs`,
       'utf8',
     );
     const template = handlebars.compile(source);
