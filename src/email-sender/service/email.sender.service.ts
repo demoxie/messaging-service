@@ -25,7 +25,7 @@ export class EmailSenderService {
     const senderService = email.sendingService;
     const htmlEmail = template(email.body);
     const mailOptions = {
-      from: email.from,
+      from: 'hello@gamestar.exchange',
       to: email.to,
       subject: email.subject,
       html: htmlEmail,

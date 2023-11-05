@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Card Transaction Notification</title>
+</head>
+
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
+
+    <div class="container" style="max-width: 600px; margin: 0 auto; padding: 20px;">
+        <div class="banner" style="width: 100%;">
+            <img src="https://media.licdn.com/dms/image/D5633AQGdK6rsQDN9dw/productpage-image_1128_635/0/1683333279064/gamestar_exchange_sure_trade_image?e=2147483647&v=beta&t=odQWwmeik1_CEleJVEe84AQouoyjbqvSlvZ8YRFzIqs" alt="Banner" style="width: 100%;">
+        </div>
+
+        <h2 style="color: #6A0572;">Hi {{ name }},</h2>
+        <p>A gift transaction has been posted for you. Below are the details of the gift card with transaction reference <b>{{ transactionReference }}</b>.</p>
+
+        <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+            <tr style="background-color: #976BD4; color: white; text-align: center;">
+                <th colspan="2" style="padding: 10px;">Gift Card Details</th>
+            </tr>
+            <tr style="background-color: #E1D7FF;">
+                <td style="padding: 10px;">Gift Card Type</td>
+                <td style="padding: 10px;">{{ cardType }}</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px;">Gift Card Issuer</td>
+                <td style="padding: 10px;">{{ cardIssuer }}</td>
+            </tr>
+            <tr style="background-color: #E1D7FF;">
+                <td style="padding: 10px;">Quantity</td>
+                <td style="padding: 10px;">{{ quantity }}</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px;">Price per unit</td>
+                <td style="padding: 10px;">{{ pricePerUnit }}</td>
+            </tr>
+            <tr style="background-color: #E1D7FF;">
+                <td style="padding: 10px;">Total Amount</td>
+                <td style="padding: 10px;">{{ total }}</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px;">Card Currency</td>
+                <td style="padding: 10px;">{{ cardCurrency }}</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px;">Payment Currency</td>
+                <td style="padding: 10px;">{{ paymentCurrency }}</td>
+            </tr>
+            <tr style="background-color: #E1D7FF;">
+                <td style="padding: 10px;">Card Image</td>
+                <td style="text-align: center; padding: 10px;"><a href="{{ link }}" style="display: inline-block; width: 80px; padding: 10px; background-color: #6A0572; color: white; text-decoration: none; border-radius: 5px;">View</a></td>
+            </tr>
+        </table>
+
+        <p>Please login to accept or reject the transaction.</p>
+
+        <p>Thank you for choosing Sure Trade</p>
+
+        <div class="footer" style="margin-top: 20px; background-color: #976BD4; color: white; padding: 10px; text-align: center;">
+            <p>&copy; 2023 Sure Trade. All rights reserved. For support, please email <span style="font-weight: bold; color: #FFD700;">hello@gamestar.exchange</span></p>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
