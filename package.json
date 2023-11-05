@@ -28,6 +28,7 @@
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/typeorm": "^10.0.0",
     "@sendgrid/mail": "^7.7.0",
+    "@types/amqplib": "^0.10.3",
     "@types/nodemailer": "^6.4.13",
     "amqp-connection-manager": "^4.1.14",
     "amqplib": "^0.10.3",

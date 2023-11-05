@@ -1,4 +1,4 @@
-import { Controller, Get, Inject, Post } from '@nestjs/common';
+import { Controller, Get, Inject } from '@nestjs/common';
 import { AppService } from './app.service';
 import {
   ClientProxy,
@@ -8,7 +8,6 @@ import {
   RmqContext,
 } from '@nestjs/microservices';
 import { EmailDto } from './message/dto/email.dto';
-import { Patterns } from './types/patterns';
 import { EmailSenderService } from './email-sender/service/email.sender.service';
 
 @Controller()
@@ -20,17 +19,14 @@ export class AppController {
     private readonly emailSenderService: EmailSenderService,
   ) {}
 
-  @EventPattern(Patterns.EMAIL_QUEUE)
-  async handlePaymentQueue(
-    @Payload() data: EmailDto,
-    @Ctx() context: RmqContext,
-  ) {
+  @EventPattern()
+  async handlePaymentQueue(@Payload() data: EmailDto, @Ctx() context: RmqContext) {
     console.log('Message received: ', data);
     const channel = context.getChannelRef();
     const originalMsg = context.getMessage();
     try {
       channel.ack(originalMsg);
-      return await this.emailSenderService.sendEmail('payment', data);
+      return await this.emailSenderService.sendEmail(data.templateName, data);
     } catch (e) {
       console.log(e);
       channel.nack(originalMsg);
